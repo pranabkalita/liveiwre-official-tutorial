@@ -63,14 +63,14 @@
                             </span>
                             Register
                         </button>
-
-                        <div class="text-sm text-center">
-                            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
-                                Already have an account ?
-                            </a>
-                        </div>
                     </div>
                 </form>
+
+                <div class="text-sm text-center">
+                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+                        Already have an account ?
+                    </a>
+                </div>
             </div>
         </div>
     </div>
