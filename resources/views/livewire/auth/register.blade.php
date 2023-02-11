@@ -58,7 +58,7 @@
     </form>
 
     <div class="text-sm text-center">
-        <a href="{{ route('auth.login') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
+        <a href="{{ route('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
             Already have an account ?
         </a>
     </div>

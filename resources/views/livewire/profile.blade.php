@@ -1,7 +1,7 @@
 <div>
     <h1 class="text-2xl font-semibold text-gray-900">Profile</h1>
 
-    <form>
+    <form wire:submit.prevent="save">
         <div class="mt-6 sm:mt-5">
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
@@ -14,12 +14,13 @@
                             class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
                             surge.com/
                         </span>
-                        <input id="username"
+                        <input wire:model.lazy="username" id="username"
                             class="flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                     </div>
 
-
-                    <div class="mt-1 text-red-500 text-sm">Message</div>
+                    @error('username')
+                        <div class="mt-1 text-red-500 text-sm">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
 
@@ -31,10 +32,14 @@
 
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg flex rounded-md shadow-sm">
-                        <textarea id="about" rows="3"
+                        <textarea wire:model.lazy="about" id="about" rows="3"
                             class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"></textarea>
                     </div>
-                    <div class="mt-1 text-red-500 text-sm">Message</div>
+
+                    @error('about')
+                        <div class="mt-1 text-red-500 text-sm">{{ $about }}</div>
+                    @enderror
+
                     <p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
                 </div>
             </div>
