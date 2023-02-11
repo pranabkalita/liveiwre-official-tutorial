@@ -40,6 +40,7 @@ class Profile extends Component
 
         $this->saved = true;
         $this->dispatchBrowserEvent('notify', 'Profile Saved!');
+        $this->emitSelf('notify-saved');
     }
 
     public function render()

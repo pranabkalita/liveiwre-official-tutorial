@@ -19,7 +19,7 @@
                     </div>
 
                     @error('username')
-                        <div class="mt-1 text-red-500 text-sm">{{ $message }}</div>
+                    <div class="mt-1 text-red-500 text-sm">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     </div>
 
                     @error('about')
-                        <div class="mt-1 text-red-500 text-sm">{{ $about }}</div>
+                    <div class="mt-1 text-red-500 text-sm">{{ $about }}</div>
                     @enderror
 
                     <p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
@@ -72,7 +72,16 @@
 
         <div class="mt-8 border-t border-gray-200 pt-5">
             <div class="space-x-3 flex justify-end items-center">
-                <span class="text-gray-500">Saved!</span>
+                <span
+                    x-data="{ open: false }"
+                    x-init="
+                        @this.on('notify-saved', () => {
+                            setTimeout(() => { open = false }, 2500)
+                            open = true
+                        })
+                    "
+                    x-show.transition.out.duration.1000ms="open"
+                    class="text-gray-500">Saved!</span>
 
                 <span class="inline-flex rounded-md shadow-sm">
                     <button type="button"
