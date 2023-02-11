@@ -39,6 +39,7 @@ class Profile extends Component
         auth()->user()->update($validatedData);
 
         $this->saved = true;
+        $this->dispatchBrowserEvent('notify', 'Profile Saved!');
     }
 
     public function render()
