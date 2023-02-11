@@ -37,6 +37,23 @@ class ProfileTest extends TestCase
             ->assertSet('about', 'bar');
     }
 
+    public function test_saved_message_is_shown_on_save()
+    {
+        $user = User::create([
+            'username' => 'foo',
+            'about' => 'bar',
+            'name' => 'John Doe',
+            'email' => 'john@doe.com',
+            'password' => 'secret'
+        ]);
+
+        Livewire::actingAs($user)
+            ->test('profile')
+            ->assertDontSee('Profile Saved!')
+            ->call('save')
+            ->assertSee('Profile Saved!');
+    }
+
     public function test_can_update_profile()
     {
         $user = User::factory()->create();

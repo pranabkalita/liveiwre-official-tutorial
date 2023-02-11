@@ -8,11 +8,26 @@ class Profile extends Component
 {
     public $username = '';
     public $about = '';
+    public $saved = false;
 
+    // Hooks
     public function mount()
     {
         $this->username = auth()->user()->username;
         $this->about = auth()->user()->about;
+    }
+
+    public function updated($field)
+    {
+        if ($field != 'saved') {
+            $this->saved = false;
+        }
+    }
+
+    // Methods
+    public function setAsUnsaved()
+    {
+        $this->saved = false;
     }
 
     public function save()
@@ -22,6 +37,8 @@ class Profile extends Component
             'about' => ['max:124']
         ]);
         auth()->user()->update($validatedData);
+
+        $this->saved = true;
     }
 
     public function render()
