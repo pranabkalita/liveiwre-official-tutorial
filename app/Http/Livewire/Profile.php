@@ -8,6 +8,7 @@ class Profile extends Component
 {
     public $username = '';
     public $about = '';
+    public $birthday = null;
     public $saved = false;
 
     // Hooks
@@ -15,6 +16,7 @@ class Profile extends Component
     {
         $this->username = auth()->user()->username;
         $this->about = auth()->user()->about;
+        $this->birthday = optional(auth()->user()->birthday)->format('m/d/Y');
     }
 
     public function updated($field)
@@ -34,7 +36,8 @@ class Profile extends Component
     {
         $validatedData = $this->validate([
             'username' => ['max:24'],
-            'about' => ['max:124']
+            'about' => ['max:124'],
+            'birthday' => ['sometimes']
         ]);
         auth()->user()->update($validatedData);
 
