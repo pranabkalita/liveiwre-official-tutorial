@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('about')->nullable();
             $table->string('email')->unique();
             $table->string('birthday')->nullable();
+            $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
