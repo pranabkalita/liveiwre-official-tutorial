@@ -12,7 +12,7 @@
     <!-- Alpine -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-    @yield('styles')
+    @stack('styles')
 
     @livewireStyles
 </head>
@@ -21,7 +21,7 @@
     @yield('content')
 
     @livewireScripts
-    @yield('scripts')
+    @stack('scripts')
 </body>
 
 </html>
